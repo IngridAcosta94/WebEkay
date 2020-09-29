@@ -1,1 +1,1 @@
-# Genki-API
+# E-Kay! API
