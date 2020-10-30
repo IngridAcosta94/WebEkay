@@ -1,10 +1,17 @@
 # E-Kay! API
-Integrantes: Jesus Andres Dionicio Ruiz, Ingrid del Carmen Acosta Tzab
 
-Escuela: UTM
+Alumnos: *Jesus Andres Dionicio Ruiz, Ingrid del Carmen Acosta Tzab*
 
-Grado: 4 Grupo: A
+Escuela: *UTM*
 
-Descripcion: E-Kay es una API hecha para firmar y validar documentos con valor legal a traves de los archivos e.firma proporcionados por las instituciones que las otorgan.
+Carrera: *Tecnologias de la Informacion y Comunicacion* 
 
-Tecnologia: Asp.Net Core, RazorPage
+Area: *Desarrollo de Software y Multiplataforma*
+
+Materia: *Aplicaciones Web Orientadas a Servicios*
+
+Grado: *4* Grupo: *A*
+
+Descripcion: *E-Kay es una API hecha para firmar y validar documentos con valor legal a traves de los archivos e.firma proporcionados por las instituciones que las otorgan.*
+
+Tecnologia: *Asp.Net Core, RazorPage*
