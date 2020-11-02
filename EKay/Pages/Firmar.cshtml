@@ -1,0 +1,72 @@
+﻿@page
+@model EKay.Pages.FirmarModel
+@{
+    ViewData["Title"] = "Firmar Documento";
+
+}
+
+<button id="firmar" class="btn btn-outline-info d-flex justify-content-end">Firmar este documento</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="card centrado"  style="width: 30rem">
+            <div class="card-body">
+                <center>
+                    <h3>Para firmar:</h3>
+                </center>
+                <h5>Cargue su certificado (.cer):</h5>
+                <div class="file-upload-ekay">
+                    <input type="file" id="input-file-now" class="file-upload"/>
+                </div>
+                <h5>Cargue su Llave privada (.key):</h5>
+                <div class="file-upload-ekay">
+                    <input type="file" id="input-file-now" class="file-upload" />
+                </div>
+                <h5>Ingrese la contraseña de la e.firma</h5>
+                <input type="password" class="form-control" role="textbox" placeholder="Contraseña" />
+
+                <button class="btn btn-info">
+                    Firmar y enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Scripts{
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("firmar");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $('.file-upload').file_upload();
+    </script>
+
+}

@@ -11,9 +11,9 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <i class="far fa-key"></i>
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Inicio">E-Kay!</a>
+                <i class="fas fa-key whiteicon"></i>
+                <a class="navbar-brand" asp-area="" asp-page="/Inicio"> E-Kay!</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -29,6 +29,12 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-page="/index">Index</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-page="/Documento">Documento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-page="/Firmar">Firmar</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -40,11 +46,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - EKay - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
