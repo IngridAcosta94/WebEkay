@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\sesion.js" />
+    <Content Remove="wwwroot\js\test.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\Images\placeholder.jpg" />
   </ItemGroup>
 

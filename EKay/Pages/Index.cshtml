@@ -14,17 +14,15 @@
                 <center>
                     <h2 class="card-title">Iniciar Sesion</h2>
                 </center>
-                <form method="post" class="d-flex justify-content-center">
+                <form id="InicioSesion" class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center" style="width: 28rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="form-group">
-                                    @*<label asp-for="Cuenta.Correo"></label>*@
-                                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                                    <input type="text" name="Correo" class="form-control" role="textbox" placeholder="Correo">
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
-                                    @*<label asp-for="Cuenta.Contrasenia"></label>*@
-                                    <input type="password" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Contrasenia"*@ placeholder="Contraseña">
+                                    <input type="password" name="Pass" class="form-control" role="textbox" placeholder="Contraseña">
                                 </div>
                                 <br />
                                 <div class="d-flex justify-content-start">
@@ -46,4 +44,21 @@
         </div>
     </div>
 </div>
+@section Scripts{
+    <script>
+
+        var formulario = document.getElementById('InicioSesion')
+
+        formulario.addEventListener('sumbit', function (e) {
+            e.preventDefault();
+            console.log('lmao')
+
+            var dt = new FormData(formulario)
+            console.log(dt)
+            console.log(dt.get('Correo'))
+            console.log(dt.get('Pass'))
+        })
+    </script>
+
+}
 

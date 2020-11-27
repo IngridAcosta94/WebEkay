@@ -31,7 +31,7 @@
                 <!-- Tab links -->
                 <div class="tab">
                     <button class="tablinks" onclick="openCity(event, 'Plantillas')">Plantillas</button>
-                    <button class="tablinks" onclick="openCity(event, 'Herramientas')">Herramientas</button>
+                    <button class="tablinks" onclick="openCity(event, 'Datos del documento')">Datos del Documento</button>
                     <button class="tablinks" onclick="openCity(event, 'Envio')">Envio</button>
                 </div>
                 <!-- Tab content -->
@@ -58,22 +58,57 @@
                     <br />
                 </div>
 
-                <div id="Herramientas" class="tabcontent">
-                    
+                <div id="Datos del documento" class="tabcontent overflow-auto">
+                    <h4>Datos del documento</h4>
+                    <br />
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Titulo">
+                    <br />
+                    <input type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
+                    <br />
+                    <select class="form-control">
+                        <option hidden>Carpeta</option>
+                    </select>
+                    <br />
+                    <select class="form-control">
+                        <option hidden>Tipo</option>
+                    </select>
+                    <br />
+                    <h5>Autor</h5>
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                    <br />
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                    <br />
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                    <br />
+                    <h5>Remitente</h5>
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                    <br />
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                    <br />
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                    <br />
+                    <h5>Contenido:</h5>
+                    <input type="file" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Contenido">
+                    <br />
                 </div>
 
                 <div id="Envio" class="tabcontent">
-                    <h4>Datos de sus firmantes</h4>
+                    <h4>Datos del firmante</h4>
                     <br />
                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre Completo">
                     <br />
                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo Electronico">
                     <br />
-                    <button style="border:none; background:none">
+                    @*<button style="border:none; background:none">
                         <i class="fas fa-plus-circle"></i>
                         Agregar firmante
                     </button>
+                    <br />*@
+                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Teléfono">
                     <br />
+                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Puesto">
+                    <br />
+                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre de la organización">
                     <br />
                     <h4>Opciones del Documento</h4>
                     <br />

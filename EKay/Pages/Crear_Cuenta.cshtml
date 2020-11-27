@@ -11,29 +11,29 @@
                 <center>
                     <h2 class="card-title">Crear su cuenta</h2>
                 </center>
-                <form action="" method="post" class="d-flex justify-content-center">
+                <form id="CrearCuenta" class="d-flex justify-content-center">
                     <div class="d-flex justify-content-center" style="width: 28rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
                                 <div class="form-group">
                                     @*<label asp-for="Cuenta.Correo"></label>*@
-                                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre de su empresa">
+                                    <input name="Nombre" type="text" class="form-control" role="textbox" placeholder="Nombre de su empresa">
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
                                     @*<label asp-for="Cuenta.Contrasenia"></label>*@
-                                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Contrasenia"*@ placeholder="Dirección">
+                                    <input name="Direcc" type="text" class="form-control" role="textbox" placeholder="Dirección">
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
                                     @*<label asp-for="Cuenta.Contrasenia"></label>*@
-                                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Contrasenia"*@ placeholder="Telefono">
+                                    <input name="Telef" type="text" class="form-control" role="textbox" placeholder="Telefono">
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
                                     @*<label asp-for="Cuenta.Contrasenia"></label>*@
-                                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Contrasenia"*@ placeholder="Correo">
+                                    <input name="Correo" type="text" class="form-control" role="textbox" placeholder="Correo">
                                 </div>
                                 <div class="form-group d-flex justify-content-center">
                                     @*<label asp-for="Cuenta.Contrasenia"></label>*@
-                                    <input type="password" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Contrasenia"*@ placeholder="Contraseña">
+                                    <input name="Pass" type="password" class="form-control" role="textbox" placeholder="Contraseña">
                                 </div>
                                 <br />
                                 <div class="d-flex justify-content-center">
@@ -47,3 +47,35 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        const url = "https://localhost:44321/api/empresa/"
+        var formulario = document.getElementById('CrearCuenta')
+
+        formulario.addEventListener('sumbit', function (e) {
+            e.preventDefault();
+            console.log('lmao')
+
+            var dt = new FormData(formulario)
+            console.log(dt)
+            console.log(dt.get('Nombre'))
+            console.log(dt.get('Direcc'))
+            console.log(dt.get('Telef'))
+            console.log(dt.get('Correo'))
+            console.log(dt.get('Pass'))
+
+            fetch(url, {
+                method: 'POST',
+                body: dt
+                
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(dt)
+                })
+
+        })
+    </script>
+
+}
