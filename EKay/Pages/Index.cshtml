@@ -14,7 +14,7 @@
                 <center>
                     <h2 class="card-title">Iniciar Sesion</h2>
                 </center>
-                <form id="InicioSesion" class="d-flex justify-content-center">
+                <form id="InicioSesion" name="InicioSesion" class="d-flex justify-content-center" enctype="multipart/form-data">
                     <div class="d-flex justify-content-center" style="width: 28rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
@@ -46,17 +46,17 @@
 </div>
 @section Scripts{
     <script>
+        const url = "https://localhost:44321/api/cuenta"
+        const $formulario = document.querySelector('#InicioSesion')
 
-        var formulario = document.getElementById('InicioSesion')
-
-        formulario.addEventListener('sumbit', function (e) {
+        $formulario.addEventListener('sumbit', (e) => {
             e.preventDefault();
-            console.log('lmao')
 
-            var dt = new FormData(formulario)
-            console.log(dt)
-            console.log(dt.get('Correo'))
-            console.log(dt.get('Pass'))
+            fetch(url, {
+                method:'GET',
+            })
+                .then(res => res.json())
+           //borrador
         })
     </script>
 

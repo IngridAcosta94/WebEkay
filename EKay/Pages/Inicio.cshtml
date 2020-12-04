@@ -38,10 +38,15 @@
     <br />
     <div class="d-flex justify-content-center">
         <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <form id="preDoc" name="preDoc" enctype="multipart/form-data" >
             <div class="card" style="width: 90rem; height: 25rem">
                 <div class="card-header d-flex justify-content-center">
                         <div style="width: 5rem">Paso 1.-</div>
-                        <select class="form-control" style="width: 55rem"></select>
+                        <select class="form-control" style="width: 55rem">
+                            <option hidden>Seleccione el tipo de documento.</option>
+                            <option>Carta Poder</option>
+                            <option>Compra Venta</option>
+                        </select>
                 </div>
                 <div class="card-body">
                     <center>
@@ -51,10 +56,14 @@
                         </div>
                         <div style="width: 40rem"></div>
                         <br />
-                        <button class="btn btn-danger" style="width: 20rem; height: 5rem">Subir un documento (PDF)</button>
-                        <button class="btn btn-info" style="width: 20rem; height: 5rem">Crear un documento</button>
+                        <button type="submit" class="btn btn-danger" style="width: 20rem; height: 5rem">Subir un documento (PDF)</button>
+                        <button @*type="submit"*@ class="btn btn-info" style="width: 20rem; height: 5rem">Crear un documento</button>
                     </center>
                 </div>
+            </div>
+           </form>
+            <div>
+                <label id="mensaje" name="mensaje" css="color:red;"></label>
             </div>
         </div>
     </div>
@@ -89,6 +98,66 @@
                 }
             });
         }
+
+        //api fetch
+        const url = "https://localhost:44321/api/documento"
+        const $formulario = document.querySelector('#preDoc')
+
+        const $label = document.querySelector('#mensaje')
+        function displayMessage(message) {
+            if (message)
+                $label.textContent = "." //realmente si todo va bien, esta parte nunca va a llegar a verse, la dejo por pruebas. tal la vez elimine despues.
+            else
+                $label.textContent = "Ha ocurrido un problema."
+        }
+
+        $formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const data = new FormData($formulario);
+            //Agregando al formdata, los datos son estaticos por ahora
+            data.append("fechaCreacion", Date.now());
+            data.append("contenido", "reemplazar esto");
+            data.append("remitenteId", 1);
+            data.append("autorId", 1);
+            data.append("tipoDocId", 1);
+            data.append("carpetaId", 1);
+
+            //Que recibirá el api?
+            console.log(data.get('fechaCreacion'))
+            console.log(data.get('contenido'))
+            console.log(data.get('remitenteId'))
+            console.log(data.get('autorId'))
+            console.log(data.get('tipoDocId'))
+            console.log(data.get('carpetaId'))
+            console.log(data.get('nombreArchivo'))
+            console.log(data.get('extension'))
+            console.log(data.get('tamanio'))
+            console.log(data.get('ruta'))
+            console.log(data.get('rutaBase'))
+            console.log(data.get('certificado'))
+
+
+
+
+
+
+            fetch(url, {
+                method: 'POST',
+                body: data,
+            })
+                .then(res => res.json())
+                //.then(window.location.href = 'https://localhost:44348/Documento')
+                .catch(error => console.error('Error:', error))
+                .then(response => displayMessage(response));
+
+            @*No he podido registrar el documento, pero noté dos cosas:
+                1.- probablemente haya que hacer otro cambio en el api, recibe dos 
+                paramentros de FromForm (?)
+                2.- La fecha no parece ser regresada en el formato adecuado.
+                *@
+        })
+        
     </script>
 
 }
