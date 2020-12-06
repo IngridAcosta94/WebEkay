@@ -42,7 +42,7 @@
             <div class="card" style="width: 90rem; height: 25rem">
                 <div class="card-header d-flex justify-content-center">
                         <div style="width: 5rem">Paso 1.-</div>
-                        <select class="form-control" style="width: 55rem">
+                        <select class="form-control" style="width: 55rem" asp-for="@Model.DocumentoRequest.">
                             <option hidden>Seleccione el tipo de documento.</option>
                             <option>Carta Poder</option>
                             <option>Compra Venta</option>
@@ -99,7 +99,7 @@
             });
         }
 
-        //api fetch
+        @*//api fetch
         const url = "https://localhost:44321/api/documento"
         const $formulario = document.querySelector('#preDoc')
 
@@ -151,13 +151,13 @@
                 .catch(error => console.error('Error:', error))
                 .then(response => displayMessage(response));
 
-            @*No he podido registrar el documento, pero noté dos cosas:
-                1.- probablemente haya que hacer otro cambio en el api, recibe dos 
+            No he podido registrar el documento, pero noté dos cosas:
+                1.- probablemente haya que hacer otro cambio en el api, recibe dos
                 paramentros de FromForm (?)
                 2.- La fecha no parece ser regresada en el formato adecuado.
-                *@
+
         })
-        
+        *@
     </script>
 
 }

@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EKay", "EKay\EKay.csproj", "{FC65B942-4B7B-433B-82DE-5E228681073D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestEkay", "XUnitTestEkay\XUnitTestEkay.csproj", "{40F0A784-F250-4AF3-8DF1-EDC59971363F}"
-
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestEkay", "XUnitTestEkay\XUnitTestEkay.csproj", "{40F0A784-F250-4AF3-8DF1-EDC59971363F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Documento.Application", "..\..\..\Users\dioni\Desktop\EkayAPI\Documento.Application\Documento.Application.csproj", "{6B725CF2-255C-49F3-86DC-8FE33DD4992C}"

@@ -14,15 +14,17 @@
                 <center>
                     <h2 class="card-title">Iniciar Sesion</h2>
                 </center>
-                <form id="InicioSesion" name="InicioSesion" class="d-flex justify-content-center" enctype="multipart/form-data">
+                <form method="post" class="d-flex justify-content-center" enctype="multipart/form-data">
                     <div class="d-flex justify-content-center" style="width: 28rem;">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">
+                                <span class="text-danger" asp-validation-for="CuentaRequest.Usuario"></span>
                                 <div class="form-group">
-                                    <input type="text" name="Correo" class="form-control" role="textbox" placeholder="Correo">
+                                    <input type="text" asp-for="CuentaRequest.Usuario" class="form-control" role="textbox" placeholder="Correo">
                                 </div>
+                                <span class="text-danger" asp-validation-for="CuentaRequest.Contrasenia"></span>
                                 <div class="form-group d-flex justify-content-center">
-                                    <input type="password" name="Pass" class="form-control" role="textbox" placeholder="Contraseña">
+                                    <input type="password" asp-for="CuentaRequest.Contrasenia" class="form-control" role="textbox" placeholder="Contraseña">
                                 </div>
                                 <br />
                                 <div class="d-flex justify-content-start">
@@ -45,7 +47,7 @@
     </div>
 </div>
 @section Scripts{
-    <script>
+    @*<script>
         const url = "https://localhost:44321/api/cuenta"
         const $formulario = document.querySelector('#InicioSesion')
 
@@ -58,7 +60,7 @@
                 .then(res => res.json())
            //borrador
         })
-    </script>
+    </script>*@
 
 }
 
