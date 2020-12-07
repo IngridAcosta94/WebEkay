@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace EKay.Enum
+namespace EKay.Clases
 {
     public enum TiposDoc
     {

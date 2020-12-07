@@ -15,7 +15,12 @@
 <script src="https://kit.fontawesome.com/a6df1c27d8.js" crossorigin="anonymous"></script>
 
 
-<div class="card centrado" style="width: 90rem; height: 50rem">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../Inicio">Cancelar</a></li>
+    </ol>
+</nav>
+<div class="card" style="width: 70rem; height: auto">
     <div class="card-body">
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 60rem; height: 47rem">
@@ -57,41 +62,44 @@
                     </button>
                     <br />
                 </div>
-
-                <div id="Datos del documento" class="tabcontent overflow-auto">
+                <form id="Documento" name="Documento" enctype="multipart/form-data">
+                    <div id="Datos del documento" class="tabcontent overflow-auto">
                     <h4>Datos del documento</h4>
                     <br />
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Titulo">
+                    <!--<input type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Titulo">-->
                     <br />
-                    <input type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
+                    <input name="FechaCreacion" type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
                     <br />
-                    <select class="form-control">
+                    @*<select class="form-control">
                         <option hidden>Carpeta</option>
                     </select>
                     <br />
                     <select class="form-control">
                         <option hidden>Tipo</option>
                     </select>
-                    <br />
+                    <br />*@
                     <h5>Autor</h5>
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                    <input name="NombreA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
                     <br />
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                    <input name="ApellidoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
                     <br />
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                    <input name="CorreoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
                     <br />
-                    <h5>Remitente</h5>
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                    <!--<h5>Remitente</h5>
+                    <input name="NombreRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Nombre">
                     <br />
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                    <input name="ApellidoRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Apellido">
                     <br />
-                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                    <input name="CorreoRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Correo">
+                    <br />-->
+                    <!--<h5>Contenido:</h5>
+                    <input type="file" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Contenido">-->
                     <br />
-                    <h5>Contenido:</h5>
-                    <input type="file" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Contenido">
-                    <br />
+                    <center>
+                        <button class="btn alert-dark">Registrar</button>
+                    </center>
                 </div>
-
+                </form>
                 <div id="Envio" class="tabcontent">
                     <h4>Datos del firmante</h4>
                     <br />
@@ -100,15 +108,15 @@
                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo Electronico">
                     <br />
                     @*<button style="border:none; background:none">
-                        <i class="fas fa-plus-circle"></i>
-                        Agregar firmante
-                    </button>
-                    <br />*@
-                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Teléfono">
+                            <i class="fas fa-plus-circle"></i>
+                            Agregar firmante
+                        </button>
+                        <br />*@
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Teléfono">
                     <br />
-                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Puesto">
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Puesto">
                     <br />
-                     <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre de la organización">
+                    <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre de la organización">
                     <br />
                     <h4>Opciones del Documento</h4>
                     <br />
@@ -125,11 +133,51 @@
                         </button>
                     </center>
                 </div>
+                <div>
+                    <label id="mensaje" name="mensaje" css="color:red;"></label>
+                </div>
             </div>
         </div>
     </div>
 </div>
 @section Scripts{ 
+    <script>
+        const url = "https://localhost:44321/api/documento"
+        const $formulario = document.querySelector('#Documento')
+
+        //borre el createobject
+
+        const $label = document.querySelector('#mensaje')
+        function displayMessage(message) {
+            if (message)
+                $label.textContent = "Ohhh por dios funciono!!!"
+            else
+                $label.textContent = "Oh ohhh hay problemas en la matrix!!!"
+        }
+
+        $formulario.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const dt = new FormData($formulario);
+
+            dt.set('contenido', '');
+            dt.set('nombreArchivo', 'Pues el nombre xd');
+            dt.set('ruta', 'en/algun/lado/xd');
+            dt.set('tamanio', 0.56);
+            dt.set('extension', '.pdf');
+            dt.set('rutaBase', 'en/ese/otro/lado');
+            dt.set('certificado', '');
+
+            fetch(url, {
+                method: 'POST',
+                body: dt,
+            })
+                .then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => displayMessage(response));
+
+        })
+    </script>
 <script>
     function openCity(evt, cityName) {
         // Declare all variables
@@ -151,12 +199,8 @@
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
-
-
-    //fetch datos del documento
-
-    //fetch envio
-</script>
+    </script>
+    
 }
 @*<div class="card" style="width: auto; height:auto">
         <div class="card-body">
