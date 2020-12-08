@@ -33,7 +33,7 @@ namespace EKay.Pages
             }
             else if (user.Contains(CuentaRequest.Usuario) && user.Contains(CuentaRequest.Contrasenia))
             {
-                
+               
                 return Redirect("Inicio");
             }
             return Page();

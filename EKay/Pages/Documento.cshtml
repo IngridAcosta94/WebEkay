@@ -25,11 +25,12 @@
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 60rem; height: 47rem">
                 <div class="card-body">
-                    <div class="bothcentered">
-                        <i class="fas fa-plus-circle whiteicon">
-                        </i>
-                        Arrastre su documento aqui para comenzar, o elija una plantilla
-                    </div>
+                   <input id="PreCon" type="file" class="form-control" role="textbox" style="width:50rem;height:37rem" placeholder="Contenido">
+                   <div class="bg-text">
+                       <i class="fas fa-plus-circle">
+                       </i>
+                       Arrastre su documento aqui para comenzar, o elija una plantilla
+                   </div>
                 </div>
             </div>
             <div class="card" style="width: 30rem; height: 47rem">
@@ -64,41 +65,47 @@
                 </div>
                 <form id="Documento" name="Documento" enctype="multipart/form-data">
                     <div id="Datos del documento" class="tabcontent overflow-auto">
-                    <h4>Datos del documento</h4>
-                    <br />
-                    <!--<input type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Titulo">-->
-                    <br />
-                    <input name="FechaCreacion" type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
-                    <br />
-                    @*<select class="form-control">
-                        <option hidden>Carpeta</option>
-                    </select>
-                    <br />
-                    <select class="form-control">
-                        <option hidden>Tipo</option>
-                    </select>
-                    <br />*@
-                    <h5>Autor</h5>
-                    <input name="NombreA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
-                    <br />
-                    <input name="ApellidoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
-                    <br />
-                    <input name="CorreoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
-                    <br />
-                    <!--<h5>Remitente</h5>
-                    <input name="NombreRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Nombre">
-                    <br />
-                    <input name="ApellidoRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Apellido">
-                    <br />
-                    <input name="CorreoRemitente" type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Correo">
-                    <br />-->
-                    <!--<h5>Contenido:</h5>
-                    <input type="file" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Contenido">-->
-                    <br />
-                    <center>
-                        <button class="btn alert-dark">Registrar</button>
-                    </center>
-                </div>
+                        <h4>Datos del documento</h4>
+                        <br />
+                        <!--<input type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Titulo">-->
+                        <br />
+                        <input name="FechaCreacion" type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
+                        <br />
+                        @*<select class="form-control">
+                                <option hidden>Carpeta</option>
+                            </select>
+                            <br />
+                            <select class="form-control">
+                                <option hidden>Tipo</option>
+                            </select>
+                            <br />*@
+                        <h5>Autor</h5>
+                        <input name="NombreA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                        <br />
+                        <input name="ApellidoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                        <br />
+                        <input name="CorreoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                        <br />
+                        <!--<h5>Remitente</h5>
+                        <input name="NombreRemitente" type="text" class="form-control" role="textbox"-->
+                        @*asp-for="@Model.Cuenta.Correo"*@
+                        <!--placeholder="Nombre">
+                        <br />
+                        <input name="ApellidoRemitente" type="text" class="form-control" role="textbox"-->
+                        @*asp-for="@Model.Cuenta.Correo"*@
+                        <!--placeholder="Apellido">
+                        <br />
+                        <input name="CorreoRemitente" type="text" class="form-control" role="textbox"-->
+                        @*asp-for="@Model.Cuenta.Correo"*@
+                        <!--placeholder="Correo">
+                        <br />-->
+                        <h5>Contenido:</h5>
+                        <input id="Contenido" name="Contenido" type="file" class="form-control" role="textbox" placeholder="Contenido">
+                        <br />
+                        <center>
+                            <button type="submit" class="btn alert-dark">Registrar</button>
+                        </center>
+                    </div>
                 </form>
                 <div id="Envio" class="tabcontent">
                     <h4>Datos del firmante</h4>
@@ -140,7 +147,14 @@
         </div>
     </div>
 </div>
-@section Scripts{ 
+@section Scripts{
+<script>
+
+    $(".PreCon").change(function () {
+        var $this = $(this), $clone = $this.clone();
+        $this.after($clone).appendTo(".Contenido");
+    });
+</script>
     <script>
         const url = "https://localhost:44321/api/documento"
         const $formulario = document.querySelector('#Documento')
@@ -167,6 +181,10 @@
             dt.set('extension', '.pdf');
             dt.set('rutaBase', 'en/ese/otro/lado');
             dt.set('certificado', '');
+            dt.set('empresaId', 52);
+            dt.set('remitenteId', 2);
+            dt.set('tipoDocId', 1);
+            dt.set('carpetaId', 2);
 
             fetch(url, {
                 method: 'POST',
@@ -178,29 +196,51 @@
 
         })
     </script>
-<script>
-    function openCity(evt, cityName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
+    <script>
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
 
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
         }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(cityName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
     </script>
-    
+    <script>
+        function openCity(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
 }
 @*<div class="card" style="width: auto; height:auto">
         <div class="card-body">
