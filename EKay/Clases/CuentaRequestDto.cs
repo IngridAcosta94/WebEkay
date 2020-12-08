@@ -9,7 +9,7 @@ namespace Ekay.Clases
 {
 	public class CuentaRequestDto
 	{
-		//[Required(ErrorMessage = "Compruebe que ha escrito correctamente el correo.")]
+		[Required(ErrorMessage = "Compruebe que ha escrito correctamente el correo.")]
 		public string Usuario { get; set; }
 		[Required(ErrorMessage = "Debe proporcionar una contraseña valida.")]
 		public string Contrasenia { get; set; }

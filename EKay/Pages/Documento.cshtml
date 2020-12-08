@@ -63,13 +63,14 @@
                     </button>
                     <br />
                 </div>
-                <form id="Documento" name="Documento" enctype="multipart/form-data">
+                <form method="post" id="Documento" name="Documento" enctype="multipart/form-data">
                     <div id="Datos del documento" class="tabcontent overflow-auto">
                         <h4>Datos del documento</h4>
                         <br />
                         <!--<input type="text" class="form-control" role="textbox"--> @*asp-for="@Model.Cuenta.Correo"*@ <!--placeholder="Titulo">-->
                         <br />
-                        <input name="FechaCreacion" type="date" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Fecha de Creación">
+                        <span class="text-danger" asp-validation-for="@Model.DocumentoRequest.FechaCreacion"></span>
+                        <input name="FechaCreacion" type="date" class="form-control" role="textbox" asp-for="@Model.DocumentoRequest.FechaCreacion" placeholder="Fecha de Creación">
                         <br />
                         @*<select class="form-control">
                                 <option hidden>Carpeta</option>
@@ -80,27 +81,27 @@
                             </select>
                             <br />*@
                         <h5>Autor</h5>
-                        <input name="NombreA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre">
+                        <span class="text-danger" asp-validation-for="@Model.AutorRequest.Nombre"></span>
+                        <input name="NombreA" type="text" class="form-control" role="textbox" asp-for="@Model.AutorRequest.Nombre" placeholder="Nombre">
                         <br />
-                        <input name="ApellidoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Apellido">
+                        <span class="text-danger" asp-validation-for="@Model.AutorRequest.Apellido"></span>
+                        <input name="ApellidoA" type="text" class="form-control" role="textbox" asp-for="@Model.AutorRequest.Apellido" placeholder="Apellido">
                         <br />
-                        <input name="CorreoA" type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo">
+                        <span class="text-danger" asp-validation-for="@Model.AutorRequest.Correo"></span>
+                        <input name="CorreoA" type="text" class="form-control" role="textbox" asp-for="@Model.AutorRequest.Correo" placeholder="Correo">
                         <br />
-                        <!--<h5>Remitente</h5>
-                        <input name="NombreRemitente" type="text" class="form-control" role="textbox"-->
-                        @*asp-for="@Model.Cuenta.Correo"*@
-                        <!--placeholder="Nombre">
+                        <h5>Remitente</h5>
+                        <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Nombre"></span>
+                        <input name="NombreRemitente" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Nombre" placeholder="Nombre">
                         <br />
-                        <input name="ApellidoRemitente" type="text" class="form-control" role="textbox"-->
-                        @*asp-for="@Model.Cuenta.Correo"*@
-                        <!--placeholder="Apellido">
+                        <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Apellido"></span>
+                        <input name="ApellidoRemitente" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Apellido" placeholder="Apellido">
                         <br />
-                        <input name="CorreoRemitente" type="text" class="form-control" role="textbox"-->
-                        @*asp-for="@Model.Cuenta.Correo"*@
-                        <!--placeholder="Correo">
-                        <br />-->
-                        <h5>Contenido:</h5>
-                        <input id="Contenido" name="Contenido" type="file" class="form-control" role="textbox" placeholder="Contenido">
+                        <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Correo"></span>
+                        <input name="CorreoRemitente" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Correo" placeholder="Correo">
+                        <br />
+                        @*<h5>Contenido:</h5>
+                        <input id="Contenido" name="Contenido" type="file" class="form-control" role="textbox" placeholder="Contenido">*@
                         <br />
                         <center>
                             <button type="submit" class="btn alert-dark">Registrar</button>
@@ -148,13 +149,7 @@
     </div>
 </div>
 @section Scripts{
-<script>
-
-    $(".PreCon").change(function () {
-        var $this = $(this), $clone = $this.clone();
-        $this.after($clone).appendTo(".Contenido");
-    });
-</script>
+    
     <script>
         const url = "https://localhost:44321/api/documento"
         const $formulario = document.querySelector('#Documento')
@@ -195,6 +190,25 @@
                 .then(response => displayMessage(response));
 
         })
+        
+
+        const input = document.querySelector('#PreCon');
+        const upload = (file) => {
+            fetch(url, requestOptions)
+                .then(response => response.json())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+
+            var requestOptions = {
+                method: 'PUT',
+                body: file,
+
+            };
+
+        }
+        const OnSelectFile = () => upload(input.file);
+        input.addEventListener('change', OnSelectFile, false);
+        
     </script>
     <script>
         function openCity(evt, cityName) {
