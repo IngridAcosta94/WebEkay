@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Ekay.Clases;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace EKay.Pages
 {
@@ -17,8 +20,10 @@ namespace EKay.Pages
         [BindProperty]
         public RemitenteRequestDto RemitenteRequest { get; set; }
 
+
         public IActionResult OnPost()
         {
+            
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -28,7 +33,7 @@ namespace EKay.Pages
                 return Page();
             }
         }
-
+        
         public void OnGet()
         {
         }

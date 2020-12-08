@@ -109,10 +109,10 @@ body, html {
     text-align: center;
 }
 
-input[type="file"] {
+/*input[type="file"] {
     opacity: 0.0;
     filter: alpha(opacity=10);
-}
+}*/
 
 /* The side navigation menu */
 .sidenav {
