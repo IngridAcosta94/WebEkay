@@ -1,52 +1,55 @@
 ﻿@page
 @model EKay.Pages.EditarDoc
 @{
+    ViewData["Title"] = "Editar datos del documento";
 }
-<form id="YAMECANSE" method="post" enctype="application/json">
-    <table id="view">
-        <tr>
-            <th scope="row">
-                <input id="iden" name="id" type="text" class="form-control" role="textbox" placeholder="id">
-            </th>
-            <td>
-                <input id="fecha" name="FechaCreacion" type="date" class="form-control" role="textbox" placeholder="Fecha de Creación">
-            </td>
-            <td>
-                <input id="contenido" name="Contenido" type="text" class="form-control" role="textbox" placeholder="Contenido">
-            </td>
-            <td>
-                <input id="name" name="nombreArchivo" type="text" class="form-control" role="textbox" placeholder="Nombre archivo">
-            </td>
-            @*<td>
-                <input id="ext" name="extension" type="text" class="form-control" role="textbox" placeholder="extension">
-            </td>
-            <td>
-                <input id="tamanio" name="tamanio" type="text" class="form-control" role="textbox" placeholder="tamanño">
-            </td>
-            <td>
-                <input id="ruta" name="ruta" type="text" class="form-control" role="textbox" placeholder="ruta">
-            </td>
-            <td>
-                <input id="rutabase" name="rutaBase" type="text" class="form-control" role="textbox" placeholder="ruta base">
-            </td>
-            <td>
-                <input id="cert" name="certificado" type="text" class="form-control" role="textbox" placeholder="certificado">
-            </td>*@
-            <td>
-                <input id="NombreA" name="nombreA" type="text" class="form-control" role="textbox" placeholder="Nombre autor">
-            </td>
-            <td>
-                <input id="Nombre" name="nombre" type="text" class="form-control" role="textbox" placeholder="Nombre">
-            </td>
-            @*<td>
-                <input id="correo" name="correoA" type="text" class="form-control" role="textbox" placeholder="Correo Autor">
-            </td>*@
-            <td><button type="submit">Editar</button></td>
-            <td><button onclick="location.href='/Index?=${ten.id}'">Borrar</button></td>
-        </tr>
 
-    </table>
+<form id="YAMECANSE" method="post" enctype="application/json">
+    <div id="view"  class="d-flex justify-content-around">
+        <div style="padding-top: 5rem;">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <input id="iden" name="id" type="text" class="form-control" role="textbox" placeholder="id" disabled>
+                    <h5>Fecha de Creacion:</h5>
+                    <input id="fecha" name="FechaCreacion" type="date" class="form-control" role="textbox" placeholder="Fecha de Creación">
+                    <h5>Contenido:</h5>
+                    <input id="contenido" name="Contenido" type="text" class="form-control" role="textbox" placeholder="Contenido">
+                    <h5>Nombre del Archivo:</h5>
+                    <input id="name" name="nombreArchivo" type="text" class="form-control" role="textbox" placeholder="Nombre archivo">
+
+                    @*
+        <input id="ext" name="extension" type="text" class="form-control" role="textbox" placeholder="extension">
+
+        <input id="tamanio" name="tamanio" type="text" class="form-control" role="textbox" placeholder="tamanño">
+
+        <input id="ruta" name="ruta" type="text" class="form-control" role="textbox" placeholder="ruta">
+
+        <input id="rutabase" name="rutaBase" type="text" class="form-control" role="textbox" placeholder="ruta base">
+
+        <input id="cert" name="certificado" type="text" class="form-control" role="textbox" placeholder="certificado">
+                    *@
+                    <h5>Nombre del Autor:</h5>
+                    <input id="NombreA" name="nombreA" type="text" class="form-control" role="textbox" placeholder="Nombre Autor">
+                    <h5>Fecha del Remitente:</h5>
+                    <input id="Nombre" name="nombre" type="text" class="form-control" role="textbox" placeholder="Nombre Remitente">
+
+                    @*
+        <input id="correo" name="correoA" type="text" class="form-control" role="textbox" placeholder="Correo Autor">
+                    *@
+                </li>
+            </ul>
+            <div style="padding-left: 3rem;">
+                <button type="submit">Editar</button>
+                <button onclick="Borrar()">Borrar</button>
+            </div>
+        </div>
+        
+            <img src="~/Images/Document.jpg"/>
+        
+
+</div>
 </form>
+
 <div>
     <label id="mensaje" name="mensaje" css="color:red;"></label>
 </div>
@@ -54,154 +57,102 @@
 
 <script>
 
-const url = "https://localhost:44321/api/documento/";
+    const url = "https://localhost:44321/api/documento/";
+    const formulario = document.querySelector('#YAMECANSE');
+    const iden = document.getElementById("iden");
+    const fecha = document.getElementById("fecha");
+    const nombreArchivo = document.getElementById("name");
+    const contenido = document.getElementById("contenido");
+    const nombreA = document.getElementById("NombreA");
+    const nombre = document.getElementById("Nombre");
+    const $label = document.querySelector('#mensaje')
 
-const formulario = document.querySelector('#YAMECANSE');
-const iden = document.getElementById("iden");
-const fecha = document.getElementById("fecha");
-const nombreArchivo = document.getElementById("name");
-const contenido = document.getElementById("contenido");
-const nombreA = document.getElementById("NombreA");
-const nombre = document.getElementById("Nombre");
-const $label = document.querySelector('#mensaje')
-
-function displayMessage(message) {
-    if (message)
-        $label.textContent = "Al fin"
-    else
-        $label.textContent = "Aun no"
-}
-window.addEventListener("load", GetDoc);
-formulario.addEventListener('submit', (e) => {
-    e.preventDefault()
-    let urlparam = new URLSearchParams(window.location.search);
-    let id = urlparam.get("id");
-    var dt = $("form").serializeArray();
-    var data = {};
-    var s = '';
-    for (s in dt) {
-        data[dt[s]['name']] = dt[s]['value'];
+    function displayMessage(message) {
+        if (message)
+            $label.textContent = "Al fin",
+                alert("Los datos se han actualizado correctamente. Pulse aceptar para continuar."),
+                location.href = '/Inicio';
+        else
+            $label.textContent = "Aun no"
     }
+    window.addEventListener("load", GetDoc);
+    formulario.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let urlparam = new URLSearchParams(window.location.search);
+        let id = urlparam.get("id");
+        var dt = $("form").serializeArray();
+        var data = {};
+        var s = '';
+        for (s in dt) {
+            data[dt[s]['name']] = dt[s]['value'];
+        }
 
-    fetch("https://localhost:44321/api/documento/" + id, {
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        cache: 'default',
-        method: 'PUT',
-        mode: 'cors',
-        body: JSON.stringify(data)
-
-    })
-        .then(res => res.json())
-        .catch(error => alert('Error: ' + error))
-        .then(response => displayMessage(response));
-    console.log(JSON.stringify(data));
-})
-function GetDoc() {
-    let urlparam = new URLSearchParams(window.location.search);
-    let id = urlparam.get("id");
-    console.log(id)
-    fetch("https://localhost:44321/api/documento/get/" + id)
-        .then(function (result) {
-            if (result.ok) {
-                return result.json();
-            }
-            else {
-                alert("No funciono :(, error: " + result.status);
-            }
-        }).then(function (data) {
-            $.each(data, function (index, obj) {
-                console.log(data);
-                iden.value = obj.id;
-                fecha.value = obj.fechaCreacion;
-                nombreArchivo.value = obj.nombreArchivo;
-                contenido.value = obj.contenido;
-                nombreA.value = obj.nombreA;
-                nombre.value = obj.nombre
-            })
+        fetch("https://localhost:44321/api/documento/" + id, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            cache: 'default',
+            method: 'PUT',
+            mode: 'cors',
+            body: JSON.stringify(data)
 
         })
+            .then(res => res.json())
+            .catch(error => alert('Error: ' + error))
+            .then(response => displayMessage(response));
+        console.log(JSON.stringify(data));
+    })
+    function GetDoc() {
+        let urlparam = new URLSearchParams(window.location.search);
+        let id = urlparam.get("id");
+        console.log(id)
+        fetch("https://localhost:44321/api/documento/" + id)
+            .then(function (result) {
+                if (result.ok) {
+                    return result.json();
+                    
+                }
+                else {
+                    alert("Hubo un error, error: " + result.status);
+                }
+            }).then(function (data) {
+                $.each(data, function (index, obj) {
+                    console.log(data);
+                    iden.value = obj.id;
+                    fecha.value = replaceDate(obj.fechaCreacion);
+                    nombreArchivo.value = obj.nombreArchivo;
+                    contenido.value = obj.contenido;
+                    nombreA.value = obj.nombreA;
+                    nombre.value = obj.nombre
+                })
 
-}
+            })
+    }
+    function replaceDate(texto) {
+        if (texto !== null) return texto.replace('T00:00:00', '');
+        else return null;
+    }
+    
+    function Borrar() {
+        var confirmar = confirm("El elemento seleccionado se borrará. \nPulse aceptar si está de acuerdo.");
+        if (confirmar == true) {
+            let urlparam = new URLSearchParams(window.location.search);
+            let id = urlparam.get("id");
+            fetch("https://localhost:44321/api/documento/" + id, {
+                method: 'Delete',
+            }).then(function (result) {
+                if (result.ok) {
+                    location.href = '/Inicio';
+                }
+                else {
+                    alert("DELETE no ha funcionado, error: " + result.status);
+                }
+            })
+        } else {
+            location.reload();
+        }
 
-//function meteleputcontras(id) {
-//    fetch(url, {
-//        body: dt,
-//        method: 'PUT'
+        
+    }
 
-//    })
-//}
-
-
-//var view = document.querySelector('#view')
-
-//fetch(url)
-//    .then(res => res.json())
-//    .then(data => {
-//        console.log(data)
-//        view.innerHTML = ``
-//        for (let ten of data.data[id]) {
-//            view.innerHTML +=
-//                `
-
-
-//            <tr>
-//            <th scope="row">${ten.id}</th>
-//            <td>${ten.fechaCreacion}</td>
-//            <td>${ten.contenido}</td>
-//            <td>${ten.nombreArchivo}</td>
-//            <td>${ten.extension}</td>
-//            <td>${ten.tamanio}</td>
-//            <td>${ten.ruta}</td>
-//            <td>${ten.rutaBase}</td>
-//            <td>${ten.certificado}</td>
-//            <td>${ten.nombreA}</td>
-//            <td>${ten.apellidoA}</td>
-//            <td>${ten.correoA}</td>
-//            <td><button onclick="location.href='/Index?=${ten.id}'">Editar</button></td>
-//            <td><button onclick="location.href='/Index?=${ten.id}'">Borrar</button></td>
-//            </tr>
-
-
-//            `
-//        }
-
-//    })
-
-
-
-
-
-
-//const $formulario = document.querySelector('#Documento')
-
-//const $label = document.querySelector('#mensaje')
-//function displayMessage(message) {
-//    if (message)
-//        $label.textContent = "Ohhh por dios funciono!!!"
-//    else
-//        $label.textContent = "Oh ohhh hay problemas en la matrix!!!"
-//}
-
-//$formulario.addEventListener('submit', (e) => {
-//    e.preventDefault();
-//    const id = 21;
-
-//    const dt = new FormData($formulario);
-//    console.log(dt.get('id'))
-//    console.log(dt.get('usuario'))
-//    console.log(dt.get('contrasenia'))
-//    console.log(dt.get('perfilId'))
-//    console.log(dt.get('empresaId'))
-
-//    fetch(url + id, {
-//        method: 'PUT',
-//        body: dt,
-//    })
-//        .then(res => res.json())
-//        .catch(error => console.error('Error:', error))
-//        .then(response => displayMessage(response));
-
-//})
 </script>
