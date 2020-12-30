@@ -4,12 +4,75 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - E-Kay!</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <script src="https://kit.fontawesome.com/a6df1c27d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+                <a href="/Inicio" class="nav-link">
+                    <i class="fas fa-key"></i>
+                    <span class="link-text">E-Kay!</span>
+                </a>
+            </li>
+            @*<li class="nav-item">
+                <a href="/Inicio" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span class="link-text">Inicio</span>
+                </a>
+            </li>*@
+            <li class="nav-item">
+                <a href="/Crear_Cuenta" class="nav-link">
+                    <i class="fas fa-user-circle"></i>
+                    <span class="link-text">Crear Cuenta</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Index" class="nav-link">
+                    <i class="fas fa-code"></i>
+                    <span class="link-text">Index</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Documento" class="nav-link">
+                    <i class="far fa-file-alt"></i>
+                    <span class="link-text">Documento</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Firmar" class="nav-link">
+                    <i class="fas fa-file-contract"></i>
+                    <span class="link-text">Firmar</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/Test" class="nav-link">
+                    <i class="fas fa-vials"></i>
+                    <span class="link-text">Test</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span class="link-text">Cerrar Sesión</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </main>
+
+    @*<header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
                 <i class="fas fa-key whiteicon"></i>
@@ -42,12 +105,8 @@
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    </header>*@
+    
 
 
 
