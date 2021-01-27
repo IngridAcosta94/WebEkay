@@ -10,7 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\Images\background2.jpg" />
     <None Include="wwwroot\Images\placeholder.jpg" />
+    <None Include="wwwroot\Trypdf\calendario de examenes enero-abril 21.pdf" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Enum\" />
+    <Folder Include="wwwroot\Trypdf\" />
   </ItemGroup>
 
 </Project>

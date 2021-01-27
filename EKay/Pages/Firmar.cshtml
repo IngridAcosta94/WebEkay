@@ -12,9 +12,8 @@
         </li>
         <button id="firmar" class="btn btn-outline-info">Firmar este documento</button>
     </ol>
-    
 </nav>
-
+<embed onload="ObtenerDoc()" src="~/Trypdf/calendario de examenes enero-abril 21.pdf" type="application/pdf" width="100%" height="900px"/>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -58,6 +57,18 @@
 </div>
 
 @section Scripts{
+<script>
+    function ObtenerDoc() {
+        let urlparam = new URLSearchParams(window.location.search);
+        let id = urlparam.get("id");
+        fetch("https://localhost:44321/api/documento/" + id, {
+
+        }).then(res => res.json())
+            .then(data => {
+                console.log(JSON.stringify(data))
+            })
+    }
+</script>
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
@@ -85,7 +96,7 @@
             }
         }
 
-        $('.file-upload').file_upload();
+        //$('.file-upload').file_upload();
     </script>
 
 }

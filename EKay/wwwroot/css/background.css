@@ -1,0 +1,12 @@
+﻿.background {
+    background-image: url("../Images/background2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    
+}
+.blur {
+    background: rgba(255, 255, 255, 0.2); /*// Make sure this color has an opacity of less than 1*/
+    filter: blur(8px); /*// This be the blur*/
+}

@@ -66,13 +66,13 @@
                         <br />
                         <h5>Remitente</h5>
                         <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Nombre"></span>
-                        <input name="Nombre" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Nombre" placeholder="Nombre">
+                        <input name="NombreR" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Nombre" placeholder="Nombre">
                         <br />
                         <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Apellido"></span>
-                        <input name="Apellido" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Apellido" placeholder="Apellido">
+                        <input name="ApellidoR" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Apellido" placeholder="Apellido">
                         <br />
                         <span class="text-danger" asp-validation-for="@Model.RemitenteRequest.Correo"></span>
-                        <input name="Correo" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Correo" placeholder="Correo">
+                        <input name="CorreoR" type="text" class="form-control" role="textbox" asp-for="@Model.RemitenteRequest.Correo" placeholder="Correo">
                         <br />
                         @*<h5>Contenido:</h5>
                             <input id="Contenido" name="Contenido" type="file" class="form-control" role="textbox" placeholder="Contenido">*@
@@ -88,27 +88,29 @@
                         </p>
 
                         <center>
-                            <button type="submit" class="btn alert-dark">Registrar</button>
+                            <button type="submit" class="btn alert-dark" onclick="DocumentoRegistrar()">Registrar</button>
                         </center>
                     </div>
 
                     <div id="Envio" class="tabcontent">
                         <h4>Datos del firmante</h4>
                         <br />
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre Completo">
+                        <input name="NombreF" type="text" class="form-control" role="textbox" placeholder="Nombre">
                         <br />
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Correo Electronico">
+                        <input name="ApellidoF" type="text" class="form-control" role="textbox"  placeholder="Apellido">
+                        <br />
+                        <input name="CorreoF" type="text" class="form-control" role="textbox"  placeholder="Correo Electronico">
                         <br />
                         @*<button style="border:none; background:none">
-                                <i class="fas fa-plus-circle"></i>
-                                Agregar firmante
-                            </button>
-                            <br />*@
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Teléfono">
+                        <i class="fas fa-plus-circle"></i>
+                        Agregar firmante
+                        </button>
+                        <br />*@
+                        <input name="TelefonoF" type="text" class="form-control" role="textbox"  placeholder="Teléfono">
                         <br />
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Puesto">
+                        <input name="Puesto" type="text" class="form-control" role="textbox" placeholder="Puesto">
                         <br />
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Nombre de la organización">
+                        <input name="Organizacion" type="text" class="form-control" role="textbox" placeholder="Nombre de la organización">
                         <br />
                         <h4>Opciones del Documento</h4>
                         <br />
@@ -116,10 +118,12 @@
                         <label for="clave">Clave de acceso</label>
                         <br />
                         <br />
-                        <input type="text" class="form-control" role="textbox" @*asp-for="@Model.Cuenta.Correo"*@ placeholder="Cree una clave de acceso">
+                        <input type="text" class="form-control" role="textbox" placeholder="Cree una clave de acceso">
                         <br />
                         <br />
-
+                        <center>
+                            <button type="submit" class="btn alert-dark" onclick="DocumentoEnviar()">Enviar</button>
+                        </center>
                     </div>
                     <div>
                         <label id="mensaje" name="mensaje" css="color:red;"></label>
@@ -128,56 +132,81 @@
             </div>
         </div>
     </div>
-
 </form>
 
 
 @section Scripts{
     <script>
-        const url = "https://localhost:44321/api/documento"
-        const $formulario = document.querySelector('#Documento')
+        function DocumentoRegistrar() {
+            const url = "https://localhost:44321/api/documento"
+            const $formulario = document.querySelector('#Documento')
 
-        //borre el createobject
+            //borre el createobject
 
-        const $label = document.querySelector('#mensaje')
-        function displayMessage(message) {
-            if (message)
-                $label.textContent = "Ohhh por dios funciono!!!"
-            else
-                $label.textContent = "Oh ohhh hay problemas en la matrix!!!"
-        }
+            const $label = document.querySelector('#mensaje')
+            function displayMessage(message) {
+                if (message)
+                    $label.textContent = "Ohhh por dios funciono!!!"
+                else
+                    $label.textContent = "Oh ohhh hay problemas en la matrix!!!"
+            }
 
-        $formulario.addEventListener('submit', (e) => {
-            e.preventDefault();
+            $formulario.addEventListener('submit', (e) => {
+                e.preventDefault();
 
-            const dt = new FormData($formulario);
+                const dt = new FormData($formulario);
 
-            dt.set('contenido', '');
-            dt.set('nombreArchivo', '');
-            dt.set('ruta', '');
-            dt.set('tamanio', 0);
-            dt.set('extension', '');
-            dt.set('rutaBase', '');
-            dt.set('certificado', '');
-            dt.set('empresaId', 1);
-            dt.set('remitenteId', 1);
-            dt.set('tipoDocId', 1);
-            dt.set('carpetaId', 2);
+                dt.set('contenido', '');
+                dt.set('nombreArchivo', '');
+                dt.set('ruta', '');
+                dt.set('tamanio', 0);
+                dt.set('extension', '');
+                dt.set('rutaBase', '');
+                dt.set('certificado', '');
+                dt.set('empresaId', 1);
+                dt.set('remitenteId', 1);
+                dt.set('tipoDocId', 1);
+                dt.set('carpetaId', 2);
 
-            fetch(url, {
-                method: 'POST',
-                body: dt,
+                fetch(url, {
+                    method: 'POST',
+                    body: dt,
+                })
+                    .then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => displayMessage(response));
+
             })
-                .then(res => res.json())
-                .catch(error => console.error('Error:', error))
-                .then(response => displayMessage(response));
+        }
+        function DocumentoEnviar() {
+            const url2 = "https://localhost:44321/api/firmante"
+            const $form = document.querySelector('#Documento')
 
-        })
+            const $label2 = document.querySelector('#mensaje')
+            function displayMessage(message) {
+                if (message)
+                    $label.textContent = "Ohhh por dios funciono!!!"
+                else
+                    $label.textContent = "Oh ohhh hay problemas en la matrix!!!"
+            }
 
+            $form.addEventListener('submit', (e) => {
+                e.preventDefault();
 
-
-
+                const data = new FormData($form);
+                data.set('documentoId', 1);
+                console.log(JSON.stringify(data));
+                fetch(url2, {
+                    method: 'POST',
+                    body: data,
+                }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => displayMessage(response));
+            })
+        }
+        
     </script>
+
     <script>
         function openCity(evt, cityName) {
             // Declare all variables
