@@ -3,10 +3,11 @@
 @{
     ViewData["Title"] = "Cree su cuenta";
 }
+<link rel="stylesheet" href="~/css/botones.css" />
 <body id="Indexo">
     <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="../Index">Cancelar</a></li>
+        <ol class="breadcrumb" style="background-color:#c6c3bc">
+            <li class="breadcrumb-item"><a href="../Index" style="color:white;">Cancelar</a></li>
         </ol>
     </nav>
     <div class="d-flex justify-content-center centrado">
@@ -18,35 +19,35 @@
                     </center>
                     <form method="post" class="d-flex justify-content-center" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center" style="width: 30rem;">
-                            <ul class="list-group list-group-flush" style="width: auto">
+                            <ul class="list-group list-group-flush" style="width: 20rem;">
                                 <li class="list-group-item">
                                     <span class="text-danger" asp-validation-for="EmpresaRequest.Nombre"></span>
                                     <div class="form-group">
-                                        <input asp-for="EmpresaRequest.Nombre" type="text" class="form-control" role="textbox" placeholder="Nombre de su empresa">
+                                        <input asp-for="EmpresaRequest.Nombre" type="text" class="form-control" role="textbox" placeholder="Nombre de su empresa" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="EmpresaRequest.NombreRepresentante"></span>
                                     <div class="form-group">
-                                        <input asp-for="EmpresaRequest.NombreRepresentante" type="text" class="form-control" role="textbox" placeholder="Nombre de su representante">
+                                        <input asp-for="EmpresaRequest.NombreRepresentante" type="text" class="form-control" role="textbox" placeholder="Nombre de su representante" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="EmpresaRequest.Direccion"></span>
                                     <div class="form-group d-flex justify-content-center">
-                                        <input asp-for="EmpresaRequest.Direccion" type="text" class="form-control" role="textbox" placeholder="Dirección">
+                                        <input asp-for="EmpresaRequest.Direccion" type="text" class="form-control" role="textbox" placeholder="Dirección" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="EmpresaRequest.Telefono"></span>
                                     <div class="form-group d-flex justify-content-center">
-                                        <input asp-for="EmpresaRequest.Telefono" type="text" class="form-control" role="textbox" placeholder="Telefono">
+                                        <input asp-for="EmpresaRequest.Telefono" type="text" class="form-control" role="textbox" placeholder="Telefono" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="EmpresaRequest.Correo"></span>
                                     <div class="form-group d-flex justify-content-center">
-                                        <input asp-for="EmpresaRequest.Correo" type="email" class="form-control" role="textbox" placeholder="Correo">
+                                        <input asp-for="EmpresaRequest.Correo" type="email" class="form-control" role="textbox" placeholder="Correo" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="CuentaRequest.Contrasenia"></span>
                                     <div class="form-group d-flex justify-content-center">
-                                        <input asp-for="CuentaRequest.Contrasenia" type="password" class="form-control" role="textbox" placeholder="Contraseña">
+                                        <input asp-for="CuentaRequest.Contrasenia" type="password" class="form-control" role="textbox" placeholder="Contraseña" required>
                                     </div>
                                     <br />
                                     <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-outline-danger m-1">Crear Cuenta</button>
+                                        <button type="submit" class="btnf">Crear Cuenta</button>
                                     </div>
                                 </li>
                             </ul>
@@ -112,6 +113,5 @@
                     //queda pendiente usar correo y contraseña para darselos tambien a cuenta
                 })
             </script>*@
-
     }
 </body>

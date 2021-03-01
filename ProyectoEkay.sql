@@ -1,8 +1,4 @@
-create database Ekay
-go
-
-use Ekay
-go
+alter SESSION set "_ORACLE_SCRIPT" = true;
 
 CREATE TABLE Empresa (
  Id INT NOT NULL IDENTITY(1,1),

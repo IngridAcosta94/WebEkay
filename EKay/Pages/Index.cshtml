@@ -4,9 +4,8 @@
     ViewData["Title"] = "Inicie Sesion";
 }
 
-@*<link rel="stylesheet" href="~/css/background.css" />
 
-<div class="background"><div class="blur"></div></div>*@
+<link rel="stylesheet" href="~/css/botones.css" />
 <body id="Indexo">
     <div class="background"><div class="blur"></div></div>
     <div class="d-flex justify-content-center centrado">
@@ -15,7 +14,7 @@
                 <img src="~/Images/placeholder-e-kay.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <center>
-                        <h2 class="card-title">Iniciar Sesion</h2>
+                        <h2 class="card-title">Iniciar Sesión</h2>
                     </center>
                     <form method="post" class="d-flex justify-content-center" enctype="multipart/form-data">
                         <div class="d-flex justify-content-center" style="width: 28rem;">
@@ -23,19 +22,18 @@
                                 <li class="list-group-item">
                                     <span class="text-danger" asp-validation-for="CuentaRequest.Usuario"></span>
                                     <div class="form-group">
-                                        <input type="text" asp-for="CuentaRequest.Usuario" class="form-control" role="textbox" placeholder="Correo">
+                                        <input type="text" asp-for="CuentaRequest.Usuario" class="form-control" role="textbox" placeholder="Correo" required>
                                     </div>
                                     <span class="text-danger" asp-validation-for="CuentaRequest.Contrasenia"></span>
                                     <div class="form-group d-flex justify-content-center">
-                                        <input type="password" asp-for="CuentaRequest.Contrasenia" class="form-control" role="textbox" placeholder="Contraseña">
+                                        <input type="password" asp-for="CuentaRequest.Contrasenia" class="form-control" role="textbox" placeholder="Contraseña" required>
                                     </div>
-                                    <br />
-                                    <div class="d-flex justify-content-start">
+                                    <div>
                                         <input type="radio" id="recuerdame" />
                                         <label for="recuerdame">Recordarme</label>
                                     </div>
                                     <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-outline-danger m-1">Iniciar Sesion</button>
+                                        <button type="submit" class="btnf">Iniciar Sesion</button>
                                     </div>
 
                                 </li>

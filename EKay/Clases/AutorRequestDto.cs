@@ -8,11 +8,11 @@ namespace Ekay.Clases
 	public class AutorRequestDto
 	{
 		[Required(ErrorMessage = "Proporcione un nombre.")]
-		public string Nombre { get; set; }
+		public string NombreA { get; set; }
 		[Required(ErrorMessage = "Proporcione un apellido.")]
-		public string Apellido { get; set; }
+		public string ApellidoA { get; set; }
 		[Required(ErrorMessage = "Proporcione un correo electronico.")]
-		public string Correo { get; set; }
+		public string CorreoA { get; set; }
 		public int EmpresaId { get; set; }
 	}
 }

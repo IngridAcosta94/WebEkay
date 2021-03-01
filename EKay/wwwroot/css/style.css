@@ -37,6 +37,7 @@ main {
     right:0 !important;
     position: fixed !important;
     padding: 0 !important;
+    display: block !important;
     background-color: var(--bg-primary) !important;
     transition: width 200ms ease !important;
     z-index: 1;
@@ -72,7 +73,7 @@ main {
 
 .nav-link:hover{
     filter: grayscale(0%) opacity(1) !important;
-    background: var(--bg-secondary) !important;
+    background-image: linear-gradient(to right, rgb(201,44,113),rgb(137,29,76));
     color: var(--text-secondary) !important;
 }
 
